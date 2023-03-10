@@ -1,28 +1,41 @@
 <%= form_with model: book do |form| %>
 
-  <div>著作名
+<div class="grid grid-cols-2 gap-4 w-[300px]">
+  <div class="leading-[42px]">著作名</div>
+  <div>
     <%= form.text_field :title %><br>
     <% book.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>著者
+  <div class="leading-[42px]">著者</div>
+  <div>
     <%= form.text_field :author %><br>
     <% book.errors.full_messages_for(:author).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>読了
-    <%= form.check_box :completed, {checked: true}, true, false %><br>
-    <% book.errors.full_messages_for(:completed).each do |message| %>
+  <div class="leading-[42px]">ジャンル</div>
+  <div>
+    <%= form.select :genre, Book.genres.keys.map {|g| [g, g]} %><br>
+    <% book.errors.full_messages_for(:genre).each do |message| %>
       <div><%= message %></div>
     <% end %>
   </div>
 
-  <div>送信
+  <div>読了</div>
+  <div>
+    <%= form.check_box :completed, {} %><br>
+    <% book.errors.full_messages_for(:completed).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+  <div>送信</div>
+  <div>
     <%= form.submit %>
   </div>
+</div>
 
 <% end %>

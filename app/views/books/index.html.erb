@@ -1,22 +1,51 @@
-<div class="text-3xl"> hello book cocoon </div>
-<% @books.each do |book| %>
-  <div class="w-[300px] my-4">
-    <div class="grid grid-cols-2 gap-2">
-      <div class="col-span-2 text-center bg-slate-300">
+<% stylesheet_link_tag "books" %>
+
+<div class="text-2xl">My bookshelf</div>
+<div class="w-[650px] my-4">
+  <% @books.each do |book| %>
+    <div class="h-[300px] inline-block">
+      <div class="text-center border-t-8 border-indigo-600 bg-slate-300 text-vertical h-[300px] py-4 truncate">
         <a href="/books/<%= book.id %>" class="text-orange-500">
           <%= book.title %>
         </a>
       </div>
-      <div class="bg-slate-100">著者</div>
-      <div class="bg-slate-100"><%= book.author %></div>
-      <div class="bg-slate-100">読了</div>
-      <div class="bg-slate-100"><%= book.completed ? "◎" : "×" %></div>
-      <div></div>
-      <div class="text-center bg-slate-300">
-        <%= link_to '編集', "/books/#{book.id}/edit" %> | 
-        <%= link_to '削除', "/books/#{book.id}", method: :delete %>
-      </div>
+    </div>
+  <% end %>
+  <div class="h-[300px] inline-block">
+    <div class="h-[300px] pt-[280px] truncate">
+     ...
     </div>
   </div>
-<% end %>
+  <div class="h-[300px] inline-block">
+    <div class="text-center bg-slate-300 text-vertical h-[300px] py-4 truncate">
+      <p class="text-amber-500"><%= link_to "新しく本を登録する", new_book_path %></p>
+    </div>
+  </div>
+</div>
+
+<div class="text-2xl">My book display</div>
+<div class="grid grid-cols-2 gap-4 w-[650px]">
+  <% @books.each do |book| %>
+    <div class="w-[300px] my-4">
+      <div class="grid grid-cols-2 gap-2">
+        <div class="col-span-2 text-center bg-slate-300 truncate px-4">
+          <a href="/books/<%= book.id %>" class="text-orange-500">
+            <%= book.title %>
+          </a>
+        </div>
+        <div class="bg-slate-100 truncate">著者</div>
+        <div class="bg-slate-100"><%= book.author %></div>
+        <div class="bg-slate-100">ジャンル</div>
+        <div class="bg-slate-100"><%= book.genre %></div>
+        <div class="bg-slate-100">読了</div>
+        <div class="bg-slate-100"><%= book.completed ? "◎" : "×" %></div>
+        <div></div>
+        <div class="text-center bg-slate-300">
+          <%= link_to '編集', "/books/#{book.id}/edit" %> | 
+          <%= link_to '削除', "/books/#{book.id}", method: :delete %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <p class="text-amber-500"><%= link_to "新しく本を登録する", new_book_path %></p>
