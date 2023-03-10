@@ -1,4 +1,6 @@
 class Book < ApplicationRecord
+  has_one :review
+
   validates :title, presence: true
   validates :author, presence: true
   validates :completed, inclusion: [true, false]
