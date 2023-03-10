@@ -1,0 +1,17 @@
+<div class="text-3xl"> hello book cocoon </div>
+<% @books.each do |book| %>
+  <div class="w-[300px] my-4">
+    <div class="grid grid-cols-2 gap-2">
+      <div class="col-span-2 text-center bg-slate-300">
+        <a href="/books/<%= book.id %>" class="text-orange-500">
+          <%= book.title %>
+        </a>
+      </div>
+      <div class="border">著者</div>
+      <div class="border"><%= book.author %></div>
+      <div class="border">読了</div>
+      <div class="border"><%= book.completed ? "◎" : "×" %></div>
+    </div>
+  </div>
+<% end %>
+<p class="text-amber-500"><%= link_to "新しく本を登録する", new_book_path %></p>

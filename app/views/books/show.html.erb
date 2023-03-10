@@ -1,0 +1,7 @@
+<h1> <%= @book.title %> </h1>
+<h3>著者: <%= @book.author %></h3>
+<h3>読了: <%= @book.completed ? "◎" : "×" %></h3>
+
+<%= link_to '編集', "/books/#{@book.id}/edit" %> | 
+<%= link_to '削除', "/books/#{@book.id}", method: :delete %>
+
