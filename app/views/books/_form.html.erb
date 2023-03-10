@@ -1,7 +1,6 @@
 <%= form_with model: book do |form| %>
 
   <div>著作名
-    <%= form.label :title %><br>
     <%= form.text_field :title %><br>
     <% book.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
@@ -9,7 +8,6 @@
   </div>
 
   <div>著者
-    <%= form.label :author %><br>
     <%= form.text_field :author %><br>
     <% book.errors.full_messages_for(:author).each do |message| %>
       <div><%= message %></div>
@@ -17,7 +15,6 @@
   </div>
 
   <div>読了
-    <%= form.label :completed %><br>
     <%= form.check_box :completed, {checked: true}, true, false %><br>
     <% book.errors.full_messages_for(:completed).each do |message| %>
       <div><%= message %></div>

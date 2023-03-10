@@ -7,10 +7,15 @@
           <%= book.title %>
         </a>
       </div>
-      <div class="border">著者</div>
-      <div class="border"><%= book.author %></div>
-      <div class="border">読了</div>
-      <div class="border"><%= book.completed ? "◎" : "×" %></div>
+      <div class="bg-slate-100">著者</div>
+      <div class="bg-slate-100"><%= book.author %></div>
+      <div class="bg-slate-100">読了</div>
+      <div class="bg-slate-100"><%= book.completed ? "◎" : "×" %></div>
+      <div></div>
+      <div class="text-center bg-slate-300">
+        <%= link_to '編集', "/books/#{book.id}/edit" %> | 
+        <%= link_to '削除', "/books/#{book.id}", method: :delete %>
+      </div>
     </div>
   </div>
 <% end %>
